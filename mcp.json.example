@@ -1,0 +1,103 @@
+{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@brave/brave-search-mcp-server"],
+      "env": {
+        "BRAVE_API_KEY": "<YOUR_API_KEY>"
+      }
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "opensearch": {
+      "command": "python3",
+      "args": ["~/.claude/mcp-servers/opensearch-direct/server.py"]
+    },
+    "atlassian": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-atlassian", "--jira-url", "<YOUR_JIRA_URL>"],
+      "env": {
+        "ATLASSIAN_USER_EMAIL": "user@example.com",
+        "ATLASSIAN_API_TOKEN": "<YOUR_API_KEY>"
+      }
+    },
+    "prometheus": {
+      "command": "python3",
+      "args": ["~/.claude/mcp-servers/prometheus/server.py"],
+      "env": {
+        "PROMETHEUS_URL": "<YOUR_PROMETHEUS_URL>",
+        "PROMETHEUS_USERNAME": "<YOUR_USERNAME>",
+        "PROMETHEUS_PASSWORD": "<YOUR_PASSWORD>"
+      }
+    },
+    "notion": {
+      "command": "uv",
+      "args": ["run", "--no-project", "--with", "mcp", "--with", "httpx", "python", "~/.claude/mcp-servers/notion/server.py"],
+      "env": {
+        "NOTION_USER_ID": "<YOUR_USER_ID>",
+        "NOTION_SPACE_ID": "<YOUR_SPACE_ID>",
+        "NOTION_COOKIES": "<YOUR_COOKIE>"
+      }
+    },
+    "soc-investigations": {
+      "command": "uv",
+      "args": ["run", "--no-project", "--with", "psycopg2-binary", "--with", "requests", "python", "~/.claude/mcp-servers/soc-investigations/server.py"],
+      "env": {
+        "SOC_DB_HOST": "<YOUR_DB_HOST>",
+        "SOC_DB_PORT": "5432",
+        "SOC_DB_NAME": "<YOUR_DB_NAME>",
+        "SOC_DB_USER": "<YOUR_DB_USER>",
+        "SOC_DB_PASSWORD": "<YOUR_PASSWORD>",
+        "OPENSEARCH_URL": "<YOUR_OPENSEARCH_URL>",
+        "OPENSEARCH_USER": "<YOUR_USERNAME>",
+        "OPENSEARCH_PASSWORD": "<YOUR_PASSWORD>",
+        "TEAMS_WEBHOOK_URL": "<YOUR_WEBHOOK_URL>"
+      }
+    },
+    "soc-infrastructure": {
+      "command": "uv",
+      "args": ["run", "--no-project", "--with", "psycopg2-binary", "--with", "requests", "python", "~/.claude/mcp-servers/soc-infrastructure/server.py"],
+      "env": {
+        "SOC_DB_HOST": "<YOUR_DB_HOST>",
+        "SOC_DB_PORT": "5432",
+        "SOC_DB_NAME": "<YOUR_DB_NAME>",
+        "SOC_DB_USER": "<YOUR_DB_USER>",
+        "SOC_DB_PASSWORD": "<YOUR_PASSWORD>",
+        "PROMETHEUS_URL": "<YOUR_PROMETHEUS_URL>",
+        "PROMETHEUS_USER": "<YOUR_USERNAME>",
+        "PROMETHEUS_PASSWORD": "<YOUR_PASSWORD>",
+        "KUBECONFIG_PROD": "~/.kube/config",
+        "KUBECONFIG_STAGING": "~/.kube/config",
+        "TEAMS_WEBHOOK_URL": "<YOUR_WEBHOOK_URL>"
+      }
+    },
+    "soc-integrations": {
+      "command": "uv",
+      "args": ["run", "--no-project", "--with", "psycopg2-binary", "--with", "requests", "python", "~/.claude/mcp-servers/soc-integrations/server.py"],
+      "env": {
+        "SOC_DB_HOST": "<YOUR_DB_HOST>",
+        "SOC_DB_PORT": "5432",
+        "SOC_DB_NAME": "<YOUR_DB_NAME>",
+        "SOC_DB_USER": "<YOUR_DB_USER>",
+        "SOC_DB_PASSWORD": "<YOUR_PASSWORD>",
+        "OPENSEARCH_URL": "<YOUR_OPENSEARCH_URL>",
+        "OPENSEARCH_USER": "<YOUR_USERNAME>",
+        "OPENSEARCH_PASSWORD": "<YOUR_PASSWORD>",
+        "TEAMS_WEBHOOK_URL": "<YOUR_WEBHOOK_URL>"
+      }
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
+      "env": {
+        "GMAIL_OAUTH_PATH": "~/.gmail-mcp/gcp-oauth.keys.json"
+      }
+    }
+  }
+}
